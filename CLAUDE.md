@@ -21,3 +21,5 @@
 
 ## 地雷
 - `wait-and-verify.sh` 需要環境變數 QOOQ_TOKEN / QOOQ_WATCHER_TOKEN（`source ~/.qooq/dev-env.sh` 後啟動 claude 就有），沒有會明確 401 FAIL。
+- SaaS 部署：repo 是 DuDoOxO/helloqooqtest（private），origin 走 HTTPS + gh 憑證（SSH 金鑰是另一個帳號）。
+  console 一律用 http://localhost:8080 開。`Repository not found` 先看 target 的 auth_type，細節見 docs/saas-deploy-incident-2026-10-24.md
