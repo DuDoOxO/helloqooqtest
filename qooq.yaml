@@ -1,0 +1,25 @@
+version: 1
+app: helloqooqtest
+description: 簡單留言板（Node 後端 API + 靜態前端，同一個 server）
+
+requests:
+  cpu: 0.25
+  memory: 128Mi
+
+build:
+  template: node
+  template_vars:
+    start_cmd: "node server.js"
+
+run:
+  env:
+    PORT: "3000"
+    DATA_FILE: "/app/data/messages.json"
+  ports:
+    - "auto:3000"
+  volumes:
+    - "helloqooqtest-data:/app/data"
+
+health:
+  http: /api/health
+  port: 3000
