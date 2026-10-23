@@ -20,5 +20,4 @@
 - 狀態：`qooq watch get helloqooqtest`、`qooq component ls`
 
 ## 地雷
-- qooq-deploy skill 的 `wait-and-verify.sh --trigger` 用 curl 打 watcher 沒帶 token → 401「could not trigger」。
-  改用 `qooq watch trigger helloqooqtest` + `qooq watch get` 查狀態。
+- `wait-and-verify.sh` 需要環境變數 QOOQ_TOKEN / QOOQ_WATCHER_TOKEN（`source ~/.qooq/dev-env.sh` 後啟動 claude 就有），沒有會明確 401 FAIL。
