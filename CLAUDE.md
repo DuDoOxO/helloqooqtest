@@ -15,7 +15,7 @@
 - `qooq.yaml`：qooq 部署設定（node template、`auto:3000`、volume 掛 `/app/data`）
 
 ## 部署（qooq 本機 GitOps）
-- target/component：`helloqooqtest`（namespace `default`），目前 host port 19005
+- target/component：`helloqooqtest`（namespace `default`），目前 host port 19000（2026-10-29 重建）
 - 改完：`git add -A && git commit -m "..." && git push qooq`，約 30 秒內自動重部署
 - 狀態：`qooq watch get helloqooqtest`、`qooq component ls`
 
