@@ -30,7 +30,7 @@ function readBody(req) {
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
 
-  if (url.pathname === '/api/health') return json(res, 200, { ok: true, v: '1029' });
+  if (url.pathname === '/api/health') return json(res, 200, { ok: true1030 });
 
   if (url.pathname === '/api/messages') {
     if (req.method === 'GET') return json(res, 200, load());
