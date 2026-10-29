@@ -14,13 +14,14 @@
 - `public/`：`index.html`、`app.js`（前端）
 - `qooq.yaml`：qooq 部署設定（node template、`auto:3000`、volume 掛 `/app/data`）
 
-## 部署（qooq 本機 GitOps）
-- target/component：`helloqooqtest`（namespace `default`），目前 host port 19000（2026-10-29 重建）
-- 改完：`git add -A && git commit -m "..." && git push`，約 30 秒內自動重部署（pre-push hook 會同步推到 qooq remote；hook 不在就要另外 `git push qooq`）
-- 新版本起不來會自動回到上一版，該 commit 被記成拒絕，不會再部署
-- 狀態：`qooq watch get helloqooqtest`、`qooq component ls`
+## 部署（目前只有 SaaS，2026-10-29 起）
+- SaaS 專案 `default/helloqooqtest`，帳號 aqp8vwty（新 Google 帳號），網址 http://192.168.0.184:19003
+- 改完：`git push`（origin/GitHub）就會自動重部署；強制：`qooq project deploy helloqooqtest -n default --wait`
+- 狀態：`qooq project ls`、log：`qooq project logs helloqooqtest -n default`
+- local GitOps 已移除（watch target、pre-push hook）；`qooq` remote 與 bare repo 還留著，要恢復就重跑 skill 的 gitops-setup.sh
+- 新版本起不來會自動回到上一版（local watcher 實測過；SaaS 未測）
 
 ## 地雷
 - `wait-and-verify.sh` 需要環境變數 QOOQ_TOKEN / QOOQ_WATCHER_TOKEN（`source ~/.qooq/dev-env.sh` 後啟動 claude 就有），沒有會明確 401 FAIL。
-- SaaS 部署：repo 是 DuDoOxO/helloqooqtest（private），origin 走 HTTPS + gh 憑證（SSH 金鑰是另一個帳號）。
+- SaaS 部署：repo 是 DuDoOxO/helloqooqtest（2026-10-29 改 public；GitHub App 安裝綁在 enoch 帳號，改回 private 則 aqp8vwty 會 build 失敗），origin 走 HTTPS + gh 憑證（SSH 金鑰是另一個帳號）。
   console 一律用 http://localhost:8080 開。`Repository not found` 先看 target 的 auth_type，細節見 docs/saas-deploy-incident-2026-10-24.md
