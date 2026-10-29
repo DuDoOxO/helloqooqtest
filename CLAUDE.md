@@ -16,7 +16,8 @@
 
 ## 部署（qooq 本機 GitOps）
 - target/component：`helloqooqtest`（namespace `default`），目前 host port 19000（2026-10-29 重建）
-- 改完：`git add -A && git commit -m "..." && git push qooq`，約 30 秒內自動重部署
+- 改完：`git add -A && git commit -m "..." && git push`，約 30 秒內自動重部署（pre-push hook 會同步推到 qooq remote；hook 不在就要另外 `git push qooq`）
+- 新版本起不來會自動回到上一版，該 commit 被記成拒絕，不會再部署
 - 狀態：`qooq watch get helloqooqtest`、`qooq component ls`
 
 ## 地雷
