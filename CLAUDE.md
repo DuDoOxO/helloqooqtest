@@ -15,7 +15,7 @@
 - `qooq.yaml`：qooq 部署設定（node template、`auto:3000`、volume 掛 `/app/data`）
 
 ## 部署（目前只有 SaaS，2026-10-29 起）
-- SaaS 專案 `default/helloqooqtest`，帳號 aqp8vwty（新 Google 帳號），網址 http://192.168.0.184:19003
+- SaaS 專案 `default/helloqooqtest`，帳號 aqp8vwty（新 Google 帳號），host port 19003（網址的 IP 跟著這台的 LAN IP 變，以 `qooq project ls` 為準）
 - 改完：`git push`（origin/GitHub）就會自動重部署；強制：`qooq project deploy helloqooqtest -n default --wait`
 - 狀態：`qooq project ls`、log：`qooq project logs helloqooqtest -n default`
 - local GitOps 已移除（watch target、pre-push hook）；`qooq` remote 與 bare repo 還留著，要恢復就重跑 skill 的 gitops-setup.sh
